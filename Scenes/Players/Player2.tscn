@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Player/Player2.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/player/ranger1idle/Sprite_ranger_idle1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/player/ranger1idle/Sprite_ranger_idle2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/player/ranger1idle/Sprite_ranger_idle3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/player/ranger1jump/Sprite_ranger_updown1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/player/ranger1stutter/Sprite_ranger_stutter.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/player/ranger1jump/Sprite_ranger_updown2.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7, 15 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "running",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "jumpUp",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "stutter",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "jumpDown",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 4
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "collision" ]
+playerClass = 1
+
+[node name="Hitbox" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="." index="1"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -10.0
+margin_top = -20.0
+margin_right = 10.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.171875, 1, 0, 1 )
+_sections_unfolded = [ "Margin" ]
+
+[node name="facing" type="RayCast2D" parent="." index="2"]
+
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 20, 0 )
+collision_mask = 1
+
+[node name="Position2D" type="Position2D" parent="." index="3"]
+
+[node name="direction" type="RayCast2D" parent="." index="4"]
+
+enabled = false
+exclude_parent = true
+cast_to = Vector2( 20, 0 )
+collision_mask = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="5"]
+
+modulate = Color( 1, 0, 0, 1 )
+frames = SubResource( 2 )
+animation = "default"
+frame = 2
+playing = true
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+

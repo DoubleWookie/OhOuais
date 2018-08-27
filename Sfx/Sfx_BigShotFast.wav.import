@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sfx_BigShotFast.wav-f4cc1790048d9c0754256bf0a0e58088.sample"
+
+[deps]
+
+source_file="res://Sfx/Sfx_BigShotFast.wav"
+dest_files=[ "res://.import/Sfx_BigShotFast.wav-f4cc1790048d9c0754256bf0a0e58088.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
